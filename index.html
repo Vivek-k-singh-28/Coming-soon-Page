@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-gray-900 to-gray-700 text-white text-center font-sans">
+  <h1 class="text-6xl font-extrabold text-yellow-400 mb-4">🚀 Coming Soon</h1>
+  <p class="text-lg mb-6">We are launching something amazing. Stay tuned!</p>
+  <div id="countdown" class="text-3xl font-bold text-cyan-300 mb-6"></div>
+  <div class="flex">
+    <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded-l-lg text-gray-900 w-64">
+    <button class="bg-yellow-400 text-black px-6 py-2 rounded-r-lg font-bold hover:bg-yellow-500">Join Waitlist</button>
+  </div>
+
+  <script>
+    const targetDate = new Date().getTime() + (5*24*60*60*1000);
+    const countdown = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) {
+        countdown.innerHTML = "🎉 Launched!";
+        return;
+      }
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      const mins = Math.floor((distance % (1000*60*60)) / (1000*60));
+      const secs = Math.floor((distance % (1000*60)) / 1000);
+      countdown.innerHTML = days + "d " + hours + "h " + mins + "m " + secs + "s";
+    }, 1000);
+  </script>
+</body>
+</html>
